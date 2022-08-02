@@ -3,7 +3,7 @@ kind: ServiceBinding
 metadata:
   name: spring-sensors-sensor-rmq
   annotations:
-    autoscaling.knative.dev/minScale: "2"
+    autoscaling.knative.dev/minScale: "1"
   labels:
     app.kubernetes.io/part-of: spring-sensors-sensor
     apps.tanzu.vmware.com/has-tests: "true"
