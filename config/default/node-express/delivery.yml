@@ -1,0 +1,32 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: node-express
+  labels:
+    app.kubernetes.io/part-of: node-express
+    apps.tanzu.vmware.com/workload-type: simple-web
+    app.kubernetes.io/component: run
+    carto.run/workload-name: node-express
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        conventions.apps.tanzu.vmware.com/applied-conventions: appliveview-sample/app-live-view-appflavour-check
+        developer.conventions/target-containers: workload
+        kubectl.kubernetes.io/last-applied-configuration: |
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"node-express","apps.tanzu.vmware.com/workload-type":"simple-web"},"name":"node-express","namespace":"default"},"spec":{"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"gitops_ssh_secret","value":""}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/sample-accelerators/node-express.git"}}}}
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: node-express
+        apps.tanzu.vmware.com/workload-type: simple-web
+        carto.run/workload-name: node-express
+    spec:
+      containers:
+      - image: harbor.ryanbaker.io/tap-myles-supplychain/node-express-default@sha256:87a0b6cf5de9296811f23c5b9693d83770deff0b2bb7f6abe5e8d5ba6134cf1e
+        name: workload
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+
