@@ -1,0 +1,38 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: steeltoe-app
+  labels:
+    app.kubernetes.io/part-of: steeltoe-app
+    apps.tanzu.vmware.com/workload-type: simple-web
+    tanzu.app.live.view: "true"
+    tanzu.app.live.view.application.flavours: steeltoe
+    tanzu.app.live.view.application.name: steeltoe-weatherforecast
+    app.kubernetes.io/component: run
+    carto.run/workload-name: steeltoe-app
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        conventions.apps.tanzu.vmware.com/applied-conventions: appliveview-sample/app-live-view-appflavour-check
+        developer.conventions/target-containers: workload
+        kubectl.kubernetes.io/last-applied-configuration: |
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"steeltoe-app","apps.tanzu.vmware.com/workload-type":"simple-web","tanzu.app.live.view":"true","tanzu.app.live.view.application.flavours":"steeltoe","tanzu.app.live.view.application.name":"steeltoe-weatherforecast"},"name":"steeltoe-app","namespace":"default"},"spec":{"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"gitops_ssh_secret","value":""}],"source":{"git":{"ref":{"branch":"main"},"url":"https://gitlab.com/tanzuplatform/samples/steeltoe-weather"}}}}
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: steeltoe-app
+        apps.tanzu.vmware.com/workload-type: simple-web
+        carto.run/workload-name: steeltoe-app
+        tanzu.app.live.view: "true"
+        tanzu.app.live.view.application.flavours: steeltoe
+        tanzu.app.live.view.application.name: steeltoe-weatherforecast
+    spec:
+      containers:
+      - image: harbor.ryanbaker.io/tap-myles-supplychain/steeltoe-app-default@sha256:3220faea0d1935b167fc3a5c2d1f2f189f3be05355b0700e5931418fcaa5bfe1
+        name: workload
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+
