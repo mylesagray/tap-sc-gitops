@@ -2,6 +2,9 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: simple-go-app
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
   labels:
     app.kubernetes.io/part-of: simple-go-app
     apps.tanzu.vmware.com/workload-type: simple-web
@@ -12,7 +15,7 @@ spec:
     metadata:
       annotations:
         autoscaling.knative.dev/minScale: "1"
-        conventions.apps.tanzu.vmware.com/applied-conventions: appliveview-sample/app-live-view-appflavour-check
+        conventions.carto.run/applied-conventions: appliveview-sample/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
         kubectl.kubernetes.io/last-applied-configuration: |
           {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"simple-go-app","apps.tanzu.vmware.com/workload-type":"simple-web"},"name":"simple-go-app","namespace":"default"},"spec":{"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"gitops_ssh_secret","value":""}],"source":{"git":{"ref":{"branch":"master"},"url":"https://github.com/gscho/simple-go-app"}}}}
