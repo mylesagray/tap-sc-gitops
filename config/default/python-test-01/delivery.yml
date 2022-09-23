@@ -1,0 +1,33 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: python-test-01
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+  labels:
+    app.kubernetes.io/part-of: python-test-01
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/component: run
+    carto.run/workload-name: python-test-01
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        conventions.carto.run/applied-conventions: appliveview-sample/app-live-view-appflavour-check
+        developer.conventions/target-containers: workload
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: python-test-01
+        apps.tanzu.vmware.com/workload-type: web
+        carto.run/workload-name: python-test-01
+    spec:
+      containers:
+      - image: harbor.ryanbaker.io/tap-myles-supplychain/python-test-01-default@sha256:0e7a1edcc1954e3533d312770bfc0ff915a839c799eff0840dcebb8fc304cbcf
+        name: workload
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+
