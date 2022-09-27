@@ -24,7 +24,7 @@ spec:
         carto.run/workload-name: python-test-01
     spec:
       containers:
-      - image: harbor.ryanbaker.io/tap-myles-supplychain/python-test-01-default@sha256:0e7a1edcc1954e3533d312770bfc0ff915a839c799eff0840dcebb8fc304cbcf
+      - image: harbor-repo.vmware.com/vspheretmm/python-test-01-default@sha256:973efff7d50b0670393db2f87cb5bee874efc9dde97c9e052a11dd3efe272354
         name: workload
         resources: {}
         securityContext:
