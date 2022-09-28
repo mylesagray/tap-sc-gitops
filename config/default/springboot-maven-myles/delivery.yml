@@ -45,7 +45,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-myles-default@sha256:40bfce72e439adf40ab53b1d0e788a7daa02a148164819e03903d04564891c0b
+        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-myles-default@sha256:ee82738e0a04f373f99acca0921bd1a8778d42a6b92a04a928f383ff4ca18a63
         livenessProbe:
           httpGet:
             path: /livez
