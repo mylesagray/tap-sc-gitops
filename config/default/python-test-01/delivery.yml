@@ -7,6 +7,7 @@ metadata:
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
   labels:
     app.kubernetes.io/part-of: python-test-01
+    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
     carto.run/workload-name: python-test-01
@@ -17,14 +18,17 @@ spec:
         autoscaling.knative.dev/minScale: "1"
         conventions.carto.run/applied-conventions: appliveview-sample/app-live-view-appflavour-check
         developer.conventions/target-containers: workload
+        kubectl.kubernetes.io/last-applied-configuration: |
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"python-test-01","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/workload-type":"web"},"name":"python-test-01","namespace":"default"},"spec":{"params":[{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"testing_pipeline_matching_labels","value":{"apps.tanzu.vmware.com/language":"python","apps.tanzu.vmware.com/pipeline":"test"}}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/benwilcock/python-pipenv"}}}}
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: python-test-01
+        apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
         carto.run/workload-name: python-test-01
     spec:
       containers:
-      - image: harbor-repo.vmware.com/vspheretmm/python-test-01-default@sha256:79dad4af60de2cd858f5507a60527f1b5c2f09d2f911c9e172c61abee1214cbd
+      - image: harbor-repo.vmware.com/vspheretmm/python-test-01-default@sha256:2eb17c497e7ff4a08601d158e5820773fff2b7fbc5a720f956d09910960d5b60
         name: workload
         resources: {}
         securityContext:
