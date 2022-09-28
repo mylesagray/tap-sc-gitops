@@ -6,8 +6,8 @@ metadata:
     ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
   labels:
-    app.kubernetes.io/has-tests: "true"
     app.kubernetes.io/part-of: springboot-maven
+    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
     carto.run/workload-name: springboot-maven-myles
@@ -25,8 +25,8 @@ spec:
         developer.conventions/target-containers: workload
       labels:
         app.kubernetes.io/component: run
-        app.kubernetes.io/has-tests: "true"
         app.kubernetes.io/part-of: springboot-maven
+        apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
         carto.run/workload-name: springboot-maven-myles
         conventions.apps.tanzu.vmware.com/framework: spring-boot
@@ -35,7 +35,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-myles-default@sha256:a8e2f3758e3aeb03a54b92da063de7857df8898450770c054a2146a5451ab2e3
+        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-myles-default@sha256:e001f5728491a280f5f6f48218879626c8e1b39c2a583d0ef67f3b3721b6ba4b
         name: workload
         ports:
         - containerPort: 8080
