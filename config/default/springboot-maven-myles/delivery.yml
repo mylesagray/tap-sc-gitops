@@ -35,7 +35,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-myles-default@sha256:3fbf3b60efe6ef1633711cf26f32509f6c4fcba034e31c5821a32dd8b128e4be
+        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-myles-default@sha256:a8e2f3758e3aeb03a54b92da063de7857df8898450770c054a2146a5451ab2e3
         name: workload
         ports:
         - containerPort: 8080
