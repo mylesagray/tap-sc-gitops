@@ -23,6 +23,7 @@ spec:
         boot.spring.io/version: 2.7.4
         conventions.carto.run/applied-conventions: |-
           developer-conventions/debug-convention
+          developer-conventions/live-update-convention
           developer-conventions/add-source-image-label
           spring-boot-convention/spring-boot
           spring-boot-convention/spring-boot-graceful-shutdown
@@ -55,7 +56,7 @@ spec:
           value: "9005"
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-default@sha256:512e539c86e9165bfe8947e1feddfcb7fb68603dc794be1bf0ac7f97a0585ec8
+        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-default@sha256:fdbd04513e04d7ab713b7bf7d9a036097b4cd11dc5d2946014e1f0dc0fc77348
         livenessProbe:
           httpGet:
             path: /livez
