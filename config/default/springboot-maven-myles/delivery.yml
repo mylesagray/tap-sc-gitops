@@ -1,0 +1,47 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: springboot-maven-myles
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+  labels:
+    app.kubernetes.io/has-tests: "true"
+    app.kubernetes.io/part-of: springboot-maven
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/component: run
+    carto.run/workload-name: springboot-maven-myles
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        boot.spring.io/version: 2.7.4
+        conventions.carto.run/applied-conventions: |-
+          spring-boot-convention/spring-boot
+          spring-boot-convention/spring-boot-graceful-shutdown
+          spring-boot-convention/spring-boot-web
+          appliveview-sample/app-live-view-appflavour-check
+        developer.conventions/target-containers: workload
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/has-tests: "true"
+        app.kubernetes.io/part-of: springboot-maven
+        apps.tanzu.vmware.com/workload-type: web
+        carto.run/workload-name: springboot-maven-myles
+        conventions.apps.tanzu.vmware.com/framework: spring-boot
+    spec:
+      containers:
+      - env:
+        - name: JAVA_TOOL_OPTIONS
+          value: -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
+        image: harbor-repo.vmware.com/vspheretmm/springboot-maven-myles-default@sha256:3fbf3b60efe6ef1633711cf26f32509f6c4fcba034e31c5821a32dd8b128e4be
+        name: workload
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+
