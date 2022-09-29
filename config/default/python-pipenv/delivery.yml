@@ -26,7 +26,7 @@ spec:
         carto.run/workload-name: python-pipenv
     spec:
       containers:
-      - image: harbor-repo.vmware.com/vspheretmm/python-pipenv-default@sha256:e658f919cb2e80306362a38a5dda1e08c03c06e6ee3c7e3e7a422cae74ac1d9c
+      - image: harbor-repo.vmware.com/vspheretmm/python-pipenv-default@sha256:4d994df628ffe71c721c2c17889a9ab995921a3f47371333821d516e5b420214
         name: workload
         resources: {}
         securityContext:
