@@ -26,7 +26,7 @@ spec:
         carto.run/workload-name: python-myles
     spec:
       containers:
-      - image: harbor-repo.vmware.com/vspheretmm/python-myles-default@sha256:a564e70f41a4607e97cc817aa9540bfb8e21ca66d9c3151437d52f766595a9ae
+      - image: harbor-repo.vmware.com/vspheretmm/python-myles-default@sha256:3acffd9adc761ad4a525a14a5cd06fe8f3be7d8f93bcebee1887bfd1df375340
         name: workload
         resources: {}
         securityContext:
