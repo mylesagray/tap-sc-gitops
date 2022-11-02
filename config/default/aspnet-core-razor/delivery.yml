@@ -7,6 +7,7 @@ metadata:
     ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
   labels:
     app.kubernetes.io/part-of: aspnet-core-razor
+    apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/workload-type: web
     app.kubernetes.io/component: run
     carto.run/workload-name: aspnet-core-razor
@@ -20,6 +21,7 @@ spec:
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: aspnet-core-razor
+        apps.tanzu.vmware.com/has-tests: "true"
         apps.tanzu.vmware.com/workload-type: web
         carto.run/workload-name: aspnet-core-razor
     spec:
