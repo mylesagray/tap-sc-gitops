@@ -1,0 +1,33 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: aspnet-core-razor
+  annotations:
+    ootb.apps.tanzu.vmware.com/servicebinding-workload: "true"
+    ootb.apps.tanzu.vmware.com/apidescriptor-ref: "true"
+  labels:
+    app.kubernetes.io/part-of: aspnet-core-razor
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/component: run
+    carto.run/workload-name: aspnet-core-razor
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        conventions.carto.run/applied-conventions: appliveview-sample/app-live-view-appflavour-check
+        developer.conventions/target-containers: workload
+      labels:
+        app.kubernetes.io/component: run
+        app.kubernetes.io/part-of: aspnet-core-razor
+        apps.tanzu.vmware.com/workload-type: web
+        carto.run/workload-name: aspnet-core-razor
+    spec:
+      containers:
+      - image: harbor-repo.vmware.com/vspheretmm/aspnet-core-razor-default@sha256:4b2d9965857c27a13b44d3ae3f1ab59047d5fb08dfaa7d15d297e4d687ce19d0
+        name: workload
+        resources: {}
+        securityContext:
+          runAsUser: 1000
+      serviceAccountName: default
+
