@@ -24,7 +24,7 @@ spec:
         carto.run/workload-name: aspnet-core-razor
     spec:
       containers:
-      - image: harbor-repo.vmware.com/vspheretmm/aspnet-core-razor-default@sha256:56ac21e7b9d8745bc9c3bee592eb7af8c9a4e925c369f9a2a3aef0f7f61846d6
+      - image: harbor-repo.vmware.com/vspheretmm/aspnet-core-razor-default@sha256:2c8c14d5b2b1cf2e23b107f579b054a54090a21d7b9dc994c523406bcf1ceed1
         name: workload
         resources: {}
         securityContext:
