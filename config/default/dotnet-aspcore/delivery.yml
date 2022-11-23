@@ -26,7 +26,7 @@ spec:
         carto.run/workload-name: dotnet-aspcore
     spec:
       containers:
-      - image: harbor-repo.vmware.com/vspheretmm/dotnet-aspcore-default@sha256:4b1176c8a29363a20d61050e97bb38435818a1f2484540933556702473eae56b
+      - image: harbor-repo.vmware.com/vspheretmm/dotnet-aspcore-default@sha256:eba7c65ff0b5114883e0fe2b9ee615979af0448d5f5979f4fd5cd2fa99f9b5c9
         name: workload
         resources: {}
         securityContext:
